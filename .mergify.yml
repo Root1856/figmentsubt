@@ -1,0 +1,13 @@
+queue_rules:
+  - name: default
+    merge_conditions:
+      - check-success=CI
+
+pull_request_rules:
+  - name: queue on approval
+    conditions:
+      - approved-reviews-by>=1
+      - base=main
+    actions:
+      queue:
+        name: default
